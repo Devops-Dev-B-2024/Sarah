@@ -35,6 +35,7 @@ Afin de supprimer le container, nous allons dans un premier temps stopper le ser
 
 Pour relancer le même container, on utilise la même commande que précédemment sans l'option `-v` ce qui donne la commande suivante `docker run -d -p 8080:80 --name devops httpd`. J'ai simplement rajouté un nom au container afin que celui-ci ne soit pas aléatoire. Ensuite pour copier notre fichier **index.html** au sein de notre container, on va utiliser la commande `cp` ce qui nous donne `docker cp index.html devops:/usr/local/apache2/htdocs`. J'ai pu mettre directement le nom du fichier car j'étais présente à la racine de ce projet donc aucun besoin d'ajouter le chemin absolu.
 
+
 ### Builder une image
 **a. À l'aide d'un Dockerfile, créer une image qui permet d'exécuter un serveur web (apache, nginx)**
 
@@ -56,6 +57,7 @@ Pour exécuter cette image, nous allons dans un premier temps build l'image puis
 
 Pour la question 3, la méthode est celle avec docker run et pour la question 4 c'est le dockerfile. On remarque que la seconde méthode est plus efficace car plus simple d'utilisation et de compréhension. Il suffit de modifier le fichier Dockerfile pour tous changements, ce qui n'est pas possible pour la première méthode.
 
+
 ### Utilisation d'une base de données dans un container docker
 **a. Récupérer les images mysql (ou mariadb) et phpmyadmin/phpmyadmin depuis le Docker Hub**
 
@@ -70,5 +72,10 @@ et
 docker run -d -p 3306:3306 --name mysql mysql
 ```
 La première permettant de lancer le container avec l'image phpmyadmin et la seconde celui avec l'image mysql.
+
+**c. Lancer le phpmyadmin (conteneurisé et publié sur un port) et ajouter une table via l'interface**
+
+Une fois le container lancé à l'étape précédente, nous pouvons accéder à l'interface de phpmyadmin via l'adresse **localhost:8080** dû au port choisi précédemment.
+Ensuite pour la seconde étape, nous devons nous connecter à l'interface de phpmyadmin via nos identifiants. 
 
 Auteur : Sarah Barrabé
