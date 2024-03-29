@@ -35,4 +35,17 @@ Afin de supprimer le container, nous allons dans un premier temps stopper le ser
 
 Pour relancer le même container, on utilise la même commande que précédemment sans l'option `-v` ce qui donne la commande suivante `docker run -d -p 8080:80 --name devops httpd`. J'ai simplement rajouté un nom au container afin que celui-ci ne soit pas aléatoire. Ensuite pour copier notre fichier **index.html** au sein de notre container, on va utiliser la commande `cp` ce qui nous donne `docker cp index.html devops:/usr/local/apache2/htdocs`. J'ai pu mettre directement le nom du fichier car j'étais présente à la racine de ce projet donc aucun besoin d'ajouter le chemin absolu.
 
+### Builder une image
+**a. À l'aide d'un Dockerfile, créer une image qui permet d'exécuter un serveur web (apache, nginx)**
+
+Le contenu de mon fichier Dockerfile est le suivant :
+```
+FROM httpd:2.4
+ 
+COPY ./index.html /usr/local/apache2/htdocs/
+
+ENV PORT 80
+EXPOSE 80
+```
+
 Auteur : Sarah Barrabé
