@@ -48,4 +48,8 @@ ENV PORT 80
 EXPOSE 80
 ```
 
+**b. Exécuter cette nouvelle image de manière à servir ./html/index.html**
+
+Pour exécuter cette image, nous allons dans un premier temps build l'image puis la lancer. Pour cela nous avons la commande `docker build -t apache .` puis nous suivons celle-ci avec la commande `docker run -d -p 8080:80 --name devopsdockerfile apache`.
+
 Auteur : Sarah Barrabé
