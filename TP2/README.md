@@ -52,4 +52,8 @@ EXPOSE 80
 
 Pour exécuter cette image, nous allons dans un premier temps build l'image puis la lancer. Pour cela nous avons la commande `docker build -t apache .` puis nous suivons celle-ci avec la commande `docker run -d -p 8080:80 --name devopsdockerfile apache`.
 
+**c. Quelles différences observez-vous entre les questions 3 et 4**
+
+Pour la question 3, la méthode est celle avec docker run et pour la question 4 c'est le dockerfile. On remarque que la seconde méthode est plus efficace car plus simple d'utilisation et de compréhension. Il suffit de modifier le fichier Dockerfile pour tous changements, ce qui n'est pas possible pour la première méthode.
+
 Auteur : Sarah Barrabé
