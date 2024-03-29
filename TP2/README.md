@@ -27,4 +27,8 @@ J'ai créé un dossier nommé **html** à la racine de mon projet puis au sein d
 
 Afin de démarrer le nouveau container en exposant le port 80, nous utilisons la commande `docker run -d -p 8080:80 httpd`. Puis pour afficher notre page index.html afin de voir s'afficher Hello World, nous utilisons la commande `docker run -d -v C:\Users\sarah\Documents\Ynov\Cours\DevOps\html:/usr/local/apache2/htdocs -p 8080:80 httpd`. La première partie étant le chemin de mon fichier index.html et la seconde la destination de celui-ci dans le container.
 
+**e. Supprimer le container**
+
+Afin de supprimer le container, nous allons dans un premier temps stopper le serveur `docker stop gracious_villani`, gracious_villani étant le nom du container. Puis une fois stoppé, nous pouvons supprimer le container via la commande `docker rm gracious_villani`.
+
 Auteur : Sarah Barrabé
