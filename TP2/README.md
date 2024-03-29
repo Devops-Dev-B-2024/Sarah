@@ -56,4 +56,9 @@ Pour exécuter cette image, nous allons dans un premier temps build l'image puis
 
 Pour la question 3, la méthode est celle avec docker run et pour la question 4 c'est le dockerfile. On remarque que la seconde méthode est plus efficace car plus simple d'utilisation et de compréhension. Il suffit de modifier le fichier Dockerfile pour tous changements, ce qui n'est pas possible pour la première méthode.
 
+### Utilisation d'une base de données dans un container docker
+**a. Récupérer les images mysql (ou mariadb) et phpmyadmin/phpmyadmin depuis le Docker Hub**
+
+Afin de récupérer les images, nous utilisons dans un premier temps la commande `docker pull mysql` pour récupérer MySQL puis la commande `docker pull phpmyadmin` pour récupérer PhpMyAdmin
+
 Auteur : Sarah Barrabé
