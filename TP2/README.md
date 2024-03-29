@@ -19,4 +19,8 @@ Afin de récupérer l'image sur le docker hub, nous utilisons la commande `docke
 
 Pour vérifier que l'image est bien stockée en local, la commande `docker images` peut répondre à nos attentes car celle-ci va nous lister l'ensemble de nos images présentes en local.
 
+**c. Créer un fichier dans votre repo local ./html/index.html qui contient "Hello World"**
+
+J'ai créé un dossier nommé **html** à la racine de mon projet puis au sein de celui-ci un nouveau fichier nommé **index.html** permettant d'afficher à l'aide d'une balise `<h1>` html le terme Hello World.
+
 Auteur : Sarah Barrabé
