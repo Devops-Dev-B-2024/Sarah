@@ -59,6 +59,16 @@ Pour la question 3, la méthode est celle avec docker run et pour la question 4 
 ### Utilisation d'une base de données dans un container docker
 **a. Récupérer les images mysql (ou mariadb) et phpmyadmin/phpmyadmin depuis le Docker Hub**
 
-Afin de récupérer les images, nous utilisons dans un premier temps la commande `docker pull mysql` pour récupérer MySQL puis la commande `docker pull phpmyadmin` pour récupérer PhpMyAdmin
+Afin de récupérer les images, nous utilisons dans un premier temps la commande `docker pull mysql` pour récupérer MySQL puis la commande `docker pull phpmyadmin` pour récupérer PhpMyAdmin.
+
+**b. Exécuter 2 containers à partir des images**
+
+Afin d'exécuter nos containers, nous allons dans l'ordre lancer les commandes :
+```
+docker run -d -p 8080:80 --name phpmyadmin phpmyadmin 
+et 
+docker run -d -p 3306:3306 --name mysql mysql
+```
+La première permettant de lancer le container avec l'image phpmyadmin et la seconde celui avec l'image mysql.
 
 Auteur : Sarah Barrabé
