@@ -23,4 +23,8 @@ Pour vérifier que l'image est bien stockée en local, la commande `docker image
 
 J'ai créé un dossier nommé **html** à la racine de mon projet puis au sein de celui-ci un nouveau fichier nommé **index.html** permettant d'afficher à l'aide d'une balise `<h1>` html le terme Hello World.
 
+**d. Démarrer un nouveau container et servir la page html créée précédemment à l'aide d'une référence absolue**
+
+Afin de démarrer le nouveau container en exposant le port 80, nous utilisons la commande `docker run -d -p 8080:80 httpd`. Puis pour afficher notre page index.html afin de voir s'afficher Hello World, nous utilisons la commande `docker run -d -v C:\Users\sarah\Documents\Ynov\Cours\DevOps\html:/usr/local/apache2/htdocs -p 8080:80 httpd`. La première partie étant le chemin de mon fichier index.html et la seconde la destination de celui-ci dans le container.
+
 Auteur : Sarah Barrabé
