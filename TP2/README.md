@@ -25,10 +25,14 @@ J'ai créé un dossier nommé **html** à la racine de mon projet puis au sein d
 
 **d. Démarrer un nouveau container et servir la page html créée précédemment à l'aide d'une référence absolue**
 
-Afin de démarrer le nouveau container en exposant le port 80, nous utilisons la commande `docker run -d -p 8080:80 httpd`. Puis pour afficher notre page index.html afin de voir s'afficher Hello World, nous utilisons la commande `docker run -d -v C:\Users\sarah\Documents\Ynov\Cours\DevOps\html:/usr/local/apache2/htdocs -p 8080:80 httpd`. La première partie étant le chemin de mon fichier index.html et la seconde la destination de celui-ci dans le container.
+Pour afficher notre page index.html afin de voir s'afficher Hello World, nous utilisons la commande `docker run -d -v C:\Users\sarah\Documents\Ynov\Cours\DevOps\html:/usr/local/apache2/htdocs -p 8080:80 httpd`. La première partie étant le chemin de mon fichier index.html et la seconde la destination de celui-ci dans le container.
 
 **e. Supprimer le container**
 
 Afin de supprimer le container, nous allons dans un premier temps stopper le serveur `docker stop gracious_villani`, gracious_villani étant le nom du container. Puis une fois stoppé, nous pouvons supprimer le container via la commande `docker rm gracious_villani`.
+
+**f. Relancez le même container sans l'option -v puis utilisez la commande cp pour servir votre fichier (docker cp ARGS)**
+
+Pour relancer le même container, on utilise la même commande que précédemment sans l'option `-v` ce qui donne la commande suivante `docker run -d -p 8080:80 --name devops httpd`. J'ai simplement rajouté un nom au container afin que celui-ci ne soit pas aléatoire. Ensuite pour copier notre fichier **index.html** au sein de notre container, on va utiliser la commande `cp` ce qui nous donne `docker cp index.html devops:/usr/local/apache2/htdocs`. J'ai pu mettre directement le nom du fichier car j'étais présente à la racine de ce projet donc aucun besoin d'ajouter le chemin absolu.
 
 Auteur : Sarah Barrabé
