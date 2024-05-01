@@ -88,4 +88,59 @@ La commande `docker-compose` à contrario de `docker run` permet de lancer et co
 
 En supposant que les containers ont déjà été construit, il nous faudra donc redémarrer les container via la commande `docker-compose restart`. Concernant la commande pour les stopper, nous utiliserons la commande `docker-compose down`. Dans le cas où les containers n'ont pas été construit il nous faudra utiliser la commande `docker-compose up`.
 
+**c. Écrire un fichier docker-compose.yml pour servir votre base de données (mysql, mariadb...etc) et phpmyadmin**
+
+Ci-dessous le fichier docker-compose.yml :
+
+```
+version: '3' # Version de docker-compose
+
+networks:
+  mysql-phpmyadmin:
+    name: mysql-phpmyadmin
+    driver: bridge
+
+volumes:
+  mysqldata:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/server/mysql-phpmyadmin/data'
+
+services:
+  mysql:
+    image: mysql:latest # Version de l'image MySQL
+    container_name: mysql # Nom du container
+    environment: # Variable d'environnement
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: database_name
+      MYSQL_USER: user_name
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3306:3306"
+    volumes: # Volume choisi pour stocker les données
+      - mysqldata:/var/lib/mysql
+    networks: # Réseau rattaché au container
+      mysql-phpmyadmin:
+        aliases:
+          - mysql
+          
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - 8080:80
+    networks:
+      mysql-phpmyadmin:
+        aliases:
+          - phpmyadmin
+```
+À présent nous pouvons accéder à notre interface phpmyadmin à l'adresse `localhost:8080` et nous connecter via les identifiants fournis dans le fichier docker-compose.yml.
+
 Auteur : Sarah Barrabé

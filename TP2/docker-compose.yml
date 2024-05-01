@@ -1,0 +1,47 @@
+version: '3' # Version de docker-compose
+
+networks:
+  mysql-phpmyadmin:
+    name: mysql-phpmyadmin
+    driver: bridge
+
+volumes:
+  mysqldata:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '${HOME}/server/mysql-phpmyadmin/data'
+
+services:
+  mysql:
+    image: mysql:latest # Version de l'image MySQL
+    container_name: mysql # Nom du container
+    environment: # Variable d'environnement
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: database_name
+      MYSQL_USER: user_name
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "6033:3306"
+    volumes: # Volume choisi pour stocker les données
+      - mysqldata:/var/lib/mysql
+    networks: # Réseau rattaché au container
+      mysql-phpmyadmin:
+        aliases:
+          - mysql
+          
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - 8080:80
+    networks:
+      mysql-phpmyadmin:
+        aliases:
+          - phpmyadmin
