@@ -76,6 +76,16 @@ La première permettant de lancer le container avec l'image phpmyadmin et la sec
 **c. Lancer le phpmyadmin (conteneurisé et publié sur un port) et ajouter une table via l'interface**
 
 Une fois le container lancé à l'étape précédente, nous pouvons accéder à l'interface de phpmyadmin via l'adresse **localhost:8080** dû au port choisi précédemment.
-Ensuite pour la seconde étape, nous devons nous connecter à l'interface de phpmyadmin via nos identifiants. 
+Ensuite pour la seconde étape, nous devons nous connecter à l'interface de phpmyadmin via nos identifiants.
+
+
+### Utilisation de docker-compose.yml
+**a. Lire la documentation de docker-compose et essayer de décrire à quoi sert la commande par rapport (VS) à la commande docker run**
+
+La commande `docker-compose` à contrario de `docker run` permet de lancer et configurer simultanément plusieurs containers. De plus `docker run` repose sur des lignes de commande tandis que `docker-compose` repose sur un fichier yaml.
+
+**b. Quelle commande permet de lancer tous les containers du fichier yaml ? Et quelle commande permet de les stopper ?**
+
+En supposant que les containers ont déjà été construit, il nous faudra donc redémarrer les container via la commande `docker-compose restart`. Concernant la commande pour les stopper, nous utiliserons la commande `docker-compose down`. Dans le cas où les containers n'ont pas été construit il nous faudra utiliser la commande `docker-compose up`.
 
 Auteur : Sarah Barrabé
