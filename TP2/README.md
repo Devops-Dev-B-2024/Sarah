@@ -1,16 +1,15 @@
 # TP2 - DOCKER
-## Partie 1
-### Installer Docker via Docker Desktop
+## Installer Docker via Docker Desktop
 
 Docker Desktop étant déjà installé sur mon PC aucune installation supplémentaire ne fût nécessaire.
 
 
-### Création d'un dossier TP2 au sein du Github
+## Création d'un dossier TP2 au sein du Github
 
 Ajout d'un dossier nommé TP2 à la racine du projet (au même niveau que le dossier TP1).
 
 
-### Exécution d'un serveur web dans un container docker
+## Exécution d'un serveur web dans un container docker
 **a. Récupérer l'image sur le docker hub (httpd or nginx)**
 
 Afin de récupérer l'image sur le docker hub, nous utilisons la commande `docker pull httpd`.
@@ -36,7 +35,7 @@ Afin de supprimer le container, nous allons dans un premier temps stopper le ser
 Pour relancer le même container, on utilise la même commande que précédemment sans l'option `-v` ce qui donne la commande suivante `docker run -d -p 8080:80 --name devops httpd`. J'ai simplement rajouté un nom au container afin que celui-ci ne soit pas aléatoire. Ensuite pour copier notre fichier **index.html** au sein de notre container, on va utiliser la commande `cp` ce qui nous donne `docker cp index.html devops:/usr/local/apache2/htdocs`. J'ai pu mettre directement le nom du fichier car j'étais présente à la racine de ce projet donc aucun besoin d'ajouter le chemin absolu.
 
 
-### Builder une image
+## Builder une image
 **a. À l'aide d'un Dockerfile, créer une image qui permet d'exécuter un serveur web (apache, nginx)**
 
 Le contenu de mon fichier Dockerfile est le suivant :
@@ -58,7 +57,7 @@ Pour exécuter cette image, nous allons dans un premier temps build l'image puis
 Pour la question 3, la méthode est celle avec docker run et pour la question 4 c'est le dockerfile. On remarque que la seconde méthode est plus efficace car plus simple d'utilisation et de compréhension. Il suffit de modifier le fichier Dockerfile pour tous changements, ce qui n'est pas possible pour la première méthode.
 
 
-### Utilisation d'une base de données dans un container docker
+## Utilisation d'une base de données dans un container docker
 **a. Récupérer les images mysql (ou mariadb) et phpmyadmin/phpmyadmin depuis le Docker Hub**
 
 Afin de récupérer les images, nous utilisons dans un premier temps la commande `docker pull mysql` pour récupérer MySQL puis la commande `docker pull phpmyadmin` pour récupérer PhpMyAdmin.
@@ -78,8 +77,9 @@ La première permettant de lancer le container avec l'image phpmyadmin et la sec
 Une fois le container lancé à l'étape précédente, nous pouvons accéder à l'interface de phpmyadmin via l'adresse **localhost:8080** dû au port choisi précédemment.
 Ensuite pour la seconde étape, nous devons nous connecter à l'interface de phpmyadmin via nos identifiants.
 
+Cependant actuellement notre container phpmyadmin ne communique pas avec notre container mysql, il nous faut utiliser alors se renseigner sur la notion de network.
 
-### Utilisation de docker-compose.yml
+## Utilisation de docker-compose.yml
 **a. Lire la documentation de docker-compose et essayer de décrire à quoi sert la commande par rapport (VS) à la commande docker run**
 
 La commande `docker-compose` à contrario de `docker run` permet de lancer et configurer simultanément plusieurs containers. De plus `docker run` repose sur des lignes de commande tandis que `docker-compose` repose sur un fichier yaml.
