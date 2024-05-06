@@ -27,4 +27,8 @@ CMD ["node", "server.js"]
 
 À ce stade le projet n'est pas fonctionnel car aucune base de donnée ne lui est associé. 
 
+## Lancement d'une image de base de données
+
+Après avoir récupéré l'image mysql via la commande `docker pull mysql`, nous pouvons alors lancer le container `docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=metacritic --name mysql mysql`
+
 Auteur : Sarah Barrabé
