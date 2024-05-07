@@ -31,4 +31,8 @@ CMD ["node", "server.js"]
 
 Après avoir récupéré l'image mysql via la commande `docker pull mysql`, nous pouvons alors lancer le container `docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=metacritic --name mysql mysql`
 
+## Adaptation des fichiers de connexion à la BDD
+
+Tout d'abord nous devons créer le network liant la base de donnée à notre projet `docker network create -d bridge mysql-network`. Ensuite nous pouvons joindre notre network à notre container contenant notre base de donnée `docker run -d --network=mysql-network -p 3306:3306 --name mysql mysql`.
+
 Auteur : Sarah Barrabé
